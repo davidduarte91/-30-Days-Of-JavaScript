@@ -956,7 +956,7 @@ console.log(numInt); // 9
 
 3. Compruebe si typeof '10' es exactamente igual a 10. Si no, hágalo exactamente igual.
 4. Compruebe si parseFloat('9.8') es igual a 10, si no, hágalo exactamente igual a 10.
-5. Verifique si 'on' se encuentra tanto en Python como en la jerga
+5. Verifique si 'on' se encuentra tanto en python como en jargon
 6. _Espero que este curso no esté lleno de jerga_. Compruebe si _jargon_ está en la oración.
 7. Genere un número aleatorio entre 0 y 100 inclusive.
 8. Genere un número aleatorio entre 50 y 100 inclusive.
