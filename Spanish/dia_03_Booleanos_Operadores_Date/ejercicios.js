@@ -105,9 +105,7 @@ perimetro: ${perimetro}`)
 // 4. Obtenga el radio usando prompt y calcule el área de un círculo (área = pi x r x r) y la circunferencia de un círculo (c = 2 x pi x r) donde pi = 3.14.
 /*
 let radio = parseFloat(prompt('Ingrese el radio'));
-let area = ((3.14 * radio * radio).toFixed(2))
-console.log(typeof area)
-let circunferencia = 2 * 3.14 * radio;
+let area = ((3.14 * radio * radio).toFixed(2)) // toFixed formatea el numero para 2 decimales. Devuelve en texto
 alert(`Área del círculo: ${area}\nCircunferencia del círculo: ${circunferencia}`)
 */
 
