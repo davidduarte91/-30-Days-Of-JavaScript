@@ -761,20 +761,19 @@ const webTechs = [
 
 1.  El siguiente es un array de 10 edades de estudiantes:
 
-        ```js
-        const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
-        ```
+```js
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+```
 
-        - Ordene el array y encuentre la edad mínima y máxima
-        - Encuentre la edad media (un elemento intermedio o dos elementos intermedios divididos por dos)
-        - Encuentre la edad promedio (todos los elementos divididos por el número de elementos)
-        - Encuentre el rango de las edades (max menos min)
-        - Compare el valor de (mín - promedio) y (máx - promedio), use el método _abs()_
+- Ordene el array y encuentre la edad mínima y máxima
+- Encuentre la edad media (un elemento intermedio o dos elementos intermedios divididos por dos)
+- Encuentre la edad promedio (todos los elementos divididos por el número de elementos)
+- Encuentre el rango de las edades (max menos min)
+- Compare el valor de (mín - promedio) y (máx - promedio), use el método _abs()_
 
-    1.Cortar los diez primeros países de la [array de países](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
-
-1.  Encuentre el país o países de en medio en el [array de países](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
-1.  Divide el array de países en dos arrays iguales si es par. Si el array de países no es par, agregue un país más para la primera mitad.
+1. Cortar los diez primeros países de la [array de países](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
+2. Encuentre el país o países de en medio en el [array de países](https://github.com/Asabeneh/30DaysOfJavaScript/tree/master/data/countries.js)
+3. Divide el array de países en dos arrays iguales si es par. Si el array de países no es par, agregue un país más para la primera mitad.
 
 🎉 ¡Felicitaciones! 🎉
 
