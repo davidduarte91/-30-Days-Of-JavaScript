@@ -211,3 +211,109 @@ const backEnd = ["Node", "Express", "MongoDB"];
 let fullStack = frontEnd.concat(backEnd)
 console.log(fullStack); // ['HTML', 'CSS', 'JS', 'React', 'Redux', 'Node', 'Express', 'MongoDB']
 
+// -----------------------
+// Ejercicios: Nivel 3
+//1. La siguiente es una matriz de 10 edades de estudiantes:
+const ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+
+// Ordene la matriz y encuentre la edad mínima y máxima
+ages.sort();
+console.log(ages) // [19, 19, 20, 22, 24, 24, 24, 25, 25, 26]
+
+let ageMin = Math.min(...ages) // Operador de propagación
+console.log(ageMin) // 19
+
+let ageMax = Math.max(...ages)
+console.log(ageMax) // 26
+
+// Encuentre la edad media (un elemento intermedio o dos elementos intermedios divididos por dos)
+let mitad = ages[ages.length/2] + ages[Math.floor((ages.length-1)/2)]
+console.log(mitad/2)
+/* como lo hizo chatgpt. Directamente selecciona el indice del medio, y si son dos, los suma y los divide.
+
+// Ordenar el array de menor a mayor
+ages.sort((a, b) => a - b);
+
+// Obtener la longitud del array
+const cantidadEdades = ages.length;
+
+// Calcular el índice del elemento medio
+const indiceMedio = Math.floor(cantidadEdades / 2);
+
+// Obtener el valor del elemento medio o el promedio de los dos elementos intermedios
+let edadMedia;
+if (cantidadEdades % 2 === 0) {
+  // Si la cantidad de edades es par, calcular el promedio de los dos elementos intermedios
+  const elementoIntermedio1 = ages[indiceMedio - 1];
+  const elementoIntermedio2 = ages[indiceMedio];
+  edadMedia = (elementoIntermedio1 + elementoIntermedio2) / 2;
+} else {
+  // Si la cantidad de edades es impar, obtener el valor del elemento medio
+  edadMedia = ages[indiceMedio];
+}
+
+console.log("La edad media es:", edadMedia);
+*/
+
+// Encuentre la edad promedio (todos los elementos divididos por el número de elementos)
+let suma = ages[0] + ages[1] + ages[2] + ages[3] + ages[4] + ages[5] + ages[6] + ages[7] + ages[8] + ages[9];
+let cantidad = ages.length;
+let promedio = suma/cantidad;
+console.log(promedio) // 22.8
+
+// Encuentre el rango de las edades (max menos min)
+// El rango es una medida estadística que indica la amplitud o diferencia entre el valor más grande (máximo) y el valor más pequeño (mínimo) en un conjunto de datos.
+let rango = ageMax - ageMin;
+console.log(rango) // 7 
+
+// Compare el valor de (mín - promedio) y (máx - promedio), use el método abs()
+let diferenciaMin = Math.abs(ageMin - promedio);
+let diferenciaMax = Math.abs(ageMax - promedio);
+
+if(diferenciaMin > diferenciaMax) {
+    console.log(`${diferenciaMin} - ${diferenciaMax} La diferencia entre el valor mínimo y el promedio es mayor`)
+} else if(diferenciaMax > diferenciaMin) {
+    console.log(`${diferenciaMax > diferenciaMin} La diferencia entre el valor máximo y mínimo es mayor`)
+} else {
+    console.log("Las diferencias son iguales")
+}
+
+// Cortar los diez primeros países del array de países
+countries.splice(0, 10); // comienza desde la posición 0 y elimina los 10 siguientes paises
+console.log(countries) // ["Kenya"]
+
+// Encuentre el país o países de en medio en el array de países
+let countries1 = ["Albania",
+"Bolivia",
+"Canada",
+"Denmark",
+"Ethiopia",
+"Finland",
+"Germany",
+"Hungary",
+"Ireland",
+"Japan",
+"Kenya",
+"Paraguay"];
+
+let cantidad1 = countries1.length; // cuenta cantidad de paises. En este caso 12
+let mitad1 = cantidad1/2; // divide en dos para hallar la mitad
+if(mitad1 % 2 === 0) { // Si la mitad es numero par, se eligen dos países para que sobren en los extremos la misma cantidad de países
+    console.log(countries1[mitad1 - 1], countries1[mitad1]) // Finland Germany
+} else {
+    console.log(countries1[Math.floor(mitad1)]) // Si la mitad es impar, se elige la mitad redondeado hacia abajo. Si fueran 11 paises quedaría 5.5 y con Math.floor sería 5. age[5] === Finland (si no estuviera Paraguay)
+}
+
+// Divide el array de países en dos arrays iguales si es par. Si el array de países no es par, agregue un país más para la primera mitad.
+let countries2;
+if(countries1.length % 2 === 0) {
+    countries2 = countries1.splice(0, countries1.length/2);
+    console.log(countries2, countries1) // ['Albania', 'Bolivia', 'Canada', 'Denmark', 'Ethiopia', 'Finland'] ['Germany', 'Hungary', 'Ireland', 'Japan', 'Kenya', 'Paraguay']
+} else {
+    countries2 = countries1.splice(0, Math.floor(countries1.length/2));
+    countries2.push("Paraguay");
+    console.log(countries2, countries1)
+}
+/*En esta solución, primero verificas si la cantidad de países es par o impar utilizando countries1.length % 2 === 0. Luego, si es par, utilizas splice() para dividir el array countries1 en dos mitades iguales, almacenando la primera mitad en countries2.
+
+Si la cantidad de países es impar, utilizas Math.floor(countries1.length / 2) para obtener la cantidad de países en la primera mitad, redondeando hacia abajo en caso de que la división resulte en un número decimal. Luego, utilizas splice() para obtener la primera mitad del array y lo almacenas en countries2. Después, agregas "Paraguay" a la primera mitad usando push(). */
