@@ -6,7 +6,7 @@ const sayHello = () => {
 // ----------------------------
 
 // 3. Utiliza forEach para mostrar con console.log cada país del array de países.
-const countries = ["Finland", "Sweden", "Denmark", "Norway", "IceLand"];
+const countries = ["Finland", "Sweden", "Denmark", "Norway", "IceLand", "France"];
 
 countries.forEach((country) => console.log(country));
 // ----------------------------
@@ -97,7 +97,11 @@ console.log(countriesStartE) // ['Denmark']
 const productsWithPrice = products.filter(elem => {
     return typeof elem.price === 'number' && !isNaN(elem.price) // Que sea tipo numerico y que no sea un NaN
 });
-console.log(productsWithPrice)
+console.log(productsWithPrice) /*
+                                    {product: 'banana', price: 3}
+                                    {product: 'mango', price: 6}
+                                    {product: 'avocado', price: 8}
+                                    {product: 'coffee', price: 10} */
 // ----------------------------------
 
 // 16. Declara una función llamada getStringLists que toma un array como parámetro y devuelve un array sólo con elementos string.
@@ -207,7 +211,134 @@ const totalPrice1 = products1.reduce((acc, product, index, array) => {
     if(typeof product.price === 'number' && !isNaN(product.price)) {
         return acc + product.price
     }
-    console.log(acc)
     return acc
 }, 0)
-console.log(totalPrice1)
+console.log(totalPrice1) // 27
+/*Asegúrate de incluir return acc; fuera del bloque condicional para garantizar que el acumulador se devuelva incluso cuando la condición no se cumple. De esta manera, el acumulador seguirá acumulando correctamente los precios válidos. */
+
+//-----------------------------------------
+// 3. Declara una función llamada categorizeCountries que retorna un array de países que tienen algún patrón común (encuentras el array de países en este repositorio como countries.js(ej 'land', 'ia', 'island','stan')).
+const countries1 = [
+    "Albania",
+    "Bolivia",
+    "Canada",
+    "Denmark",
+    "Ethiopia",
+    "Finland",
+    "Germany",
+    "Hungary",
+    "Ireland",
+    "Japan",
+    "Kenya",
+];
+
+const categorizeCountries = (array) => {
+    return array.filter(elem => elem.includes('ia'))
+}
+console.log(categorizeCountries(countries1)) // ['Albania', 'Bolivia', 'Ethiopia']
+
+// Usando map y filter
+const categorizeCountries1 = (array) => {
+    return array
+        .map(elem => elem.includes('ia') ? elem : null) // si cumple la condición añade el elemento, sino añade null
+        .filter(elem => elem !== null); // para que no incluya los elementos null en el array final
+};
+console.log(categorizeCountries1(countries1))
+
+// --------------------------------
+// 4. // Crea una función que devuelva un array de objetos, donde cada objeto contenga la letra y el número de veces que esa letra se utiliza para comenzar el nombre de un país.
+
+const generateCountryInitialsCount = (countries) => {
+    // Array que contendrá objetos con la letra inicial y su recuento correspondiente
+    const resultArray = [];
+  
+    // Iterar sobre los nombres de los países
+    countries.forEach(country => {
+      // Obtener la primera letra y convertirla a minúsculas
+      const firstLetter = country.charAt(0).toLowerCase();
+  
+      // Buscar si ya existe un objeto con la letra en el array resultante
+      const existingObject = resultArray.find(obj => obj.letter === firstLetter);// Si encuentra devuelve el objeto que cumple la condicion:{letter: 'f', count: 1}, sino undefined
+        console.log(existingObject)
+      // Verificar si ya existe un objeto con la letra en el array
+      if (existingObject) {
+        existingObject.count += 1; // Incrementar el recuento si ya existe
+      } else {
+        // Si no existe, crear un nuevo objeto y agregarlo al array
+        resultArray.push({ letter: firstLetter, count: 1 });
+      }
+    });
+  
+    // Retornar el array de objetos resultante
+    return resultArray;
+};
+  
+// Llamar a la función y mostrar el resultado en la consola
+const result = generateCountryInitialsCount(countries);
+console.log(result); //hay 5 letras distintas
+
+
+// CON REDUCE -----------------------------------------------------------
+const generateCountryInitialsCount1 = (countries) => {
+    return countries.reduce((resultArray, country) => {
+      const firstLetter = country.charAt(0).toLowerCase();
+      const existingObject = resultArray.find(obj => obj.letter === firstLetter); //Si no encuentra, find devuelve -1
+  
+      if (existingObject) {
+        existingObject.count += 1;
+      } else {
+        resultArray.push({ letter: firstLetter, count: 1 });
+      }
+  
+      return resultArray;
+    }, []);
+  };
+  
+const result1 = generateCountryInitialsCount(countries);
+console.log(result);
+
+// --------------------------------------------------------------------
+//5.Declara una función getFirstTenCountries y retorna un array de diez países. Utiliza diferente programación funcional para trabajar en el array countries.js
+const getFirstTenCountries = (countries) => {
+    if(countries.length < 10) {
+        return 'menos de 10'
+    }
+
+    const tenCountries = [];
+    countries.forEach(elem => {
+        if(tenCountries.length < 10) {
+            tenCountries.push(elem)
+        }
+    });
+    return tenCountries
+}
+
+const countries2 = ["Albania","Bolivia","Canada","Denmark","Ethiopia","Finland","Germany","Hungary","Ireland", "Japan", "kenia"];
+console.log(getFirstTenCountries(countries2))
+
+// CHATGPT -----------------------
+const getFirstTenCountries1 = (array) => {
+    return array.slice(0, 10)
+}
+console.log(getFirstTenCountries1(countries2))
+
+// --------------------------------------------------------------------------------------------------------------------------
+// 6. Declara una función getLastTenCountries que devuelve los últimos diez países del array de países.
+let getLastTenCountries = (array) => {
+    let paisDeInicio = array.length - 10;
+    let paisFinal = array.length;
+    return array.slice(paisDeInicio, paisFinal)
+}
+console.log(getLastTenCountries(countries2))
+
+
+
+const getLastTenCountries1 = (countries) => {
+    return countries.slice(-10);
+  };
+  
+ 
+  
+  const lastTenCountries = getLastTenCountries1(countries2);
+  console.log(lastTenCountries);
+  
