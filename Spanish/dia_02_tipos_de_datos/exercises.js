@@ -22,8 +22,8 @@ let primeraPalabra = desafio.substring(0, desafio.indexOf(' '));
 console.log(primeraPalabra); // 30 -> toma los índices inicial y final (no inclusivo) de la subcadena. En este caso, hemos utilizado desafio.indexOf(' ') para obtener el índice del primer espacio en blanco y así segmentar la cadena hasta ese punto.
 
 // 7. Corta la frase Days Of JavaScript de 30 Days Of JavaScript.
-let cortarFrase = desafio.substring(desafio.indexOf('D'), desafio.length)
-console.log(cortarFrase) // Days of JavaScript
+let cortarFrase = desafio.substring(desafio.indexOf('d'), desafio.length)
+console.log(cortarFrase) // días de JavaScript
 
 // 8. Verifique si la cadena contiene una palabra Script usando el método includes()
 console.log(desafio.includes('Script')) // true
@@ -40,10 +40,10 @@ let empresas = 'Facebook, Google, Microsoft, Apple, IBM, Oracle, Amazon';
 console.log(empresas.split(', ')) // ['Facebook', 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle', 'Amazon']
 
 // 12. Cambie 30 días de JavaScript a 30 días de Python usando el método replace().
-console.log(desafio.replace('JavaScript', 'Python'))
+console.log(desafio.replace('JavaScript', 'Python')) // 30 días de Python
 
 // 13. ¿Cual es el carácter en el índice 15 en la cadena '30 días de JavaScript'? Utilice el método charAt().
-console.log(desafio.charAt(15))
+console.log(desafio.charAt(15)) // S
 
 // 14. ¿Cuál es el código de carácter de J en la cadena '30 días de JavaScript' usando charCodeAt()
 console.log(desafio.charCodeAt(desafio.indexOf('J'))) // 74 -> charCodeAt toma el índice y no la letra directamente
@@ -147,7 +147,7 @@ console.log('2 1 2 4 8')
 
 // 12. Usa substr para separar la frase porque porque porque de la siguiente oración:'No puedes terminar una oración con porque porque porque es una conjunción'
 let oracion4 = "No puedes terminar una oración con porque porque porque es una conjunción"
-console.log(oracion4.substring(oracion4.indexOf('porque'), oracion4.lastIndexOf(' es')))
+console.log(oracion4.substring(oracion4.indexOf('porque'), oracion4.lastIndexOf(' es'))) // porque porque porque
 console.log(oracion4.lastIndexOf(' es')) // 55
 
 // Ejercicios: Nivel 3
@@ -159,7 +159,7 @@ console.log(arrayDeAmor.length) // 3 -> porque dió ['amor', 'amor', 'amor']
 // Una manera más larga. Al principio me tiraba 2 de conteo pero xq la última palabra amor tenía el punto final al lado y ya cambiaba la palabra
 let oracion6 = 'El amor es lo mejor que hay en este mundo. Algunos encontraron su amor y algunos todavía están buscando su amor';
 let palabras = oracion6.split(' ');
-console.log(palabras)
+console.log(palabras) // ['El', 'amor', 'es', 'lo', 'mejor', 'que', 'hay', 'en', 'este', 'mundo.', 'Algunos', 'encontraron', 'su', 'amor', 'y', 'algunos', 'todavía', 'están', 'buscando', 'su', 'amor']
 let conteo = 0;
 
 for (let i = 0; i < palabras.length; i++) {
@@ -168,12 +168,12 @@ for (let i = 0; i < palabras.length; i++) {
   }
 }
 
-console.log('Número de veces que aparece la palabra "amor": ' + conteo);
+console.log('Número de veces que aparece la palabra "amor": ' + conteo); // Número de veces que aparece la palabra "amor": 3
 
-// 2. Usa match() para contar el número de todos los porque en la siguiente oración:'No puedes terminar una oración con porque porque porque es una conjunción'
+// 2. Usa match() para contar el número de todos los 'porque' en la siguiente oración:'No puedes terminar una oración con porque porque porque es una conjunción'
 let oracion7 = 'No puedes terminar una oración con porque porque porque es una conjunción';
 let arrPorque = oracion7.match(/porque/g);
-console.log(arrPorque.length)
+console.log(arrPorque.length) // 3
 
 // 3. Limpia el siguiente texto y encuentra la palabra más frecuente (pista, usa replace y expresiones regulares).
 let sentence =   "%I $am@% a %tea@cher%, &and& I lo%#ve %te@a@ching%;. The@re $is no@th@ing; &as& mo@re rewarding as educa@ting &and& @emp%o@weri@ng peo@ple. ;I found tea@ching m%o@re interesting tha@n any ot#her %jo@bs. %Do@es thi%s mo@tiv#ate yo@u to be a tea@cher!? %Th#is 30#Days&OfJavaScript &is al@so $the $resu@lt of &love& of tea&ching";

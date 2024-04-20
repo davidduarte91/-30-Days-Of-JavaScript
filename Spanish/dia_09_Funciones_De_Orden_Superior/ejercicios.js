@@ -280,7 +280,7 @@ console.log(result); //hay 5 letras distintas
 
 // CON REDUCE -----------------------------------------------------------
 const generateCountryInitialsCount1 = (countries) => {
-    return countries.reduce((resultArray, country) => {
+    return countries.reduce((resultArray, country) => { // resultArray ya comienza siendo igual a []
       const firstLetter = country.charAt(0).toLowerCase();
       const existingObject = resultArray.find(obj => obj.letter === firstLetter); //Si no encuentra, find devuelve -1
   
@@ -314,13 +314,13 @@ const getFirstTenCountries = (countries) => {
 }
 
 const countries2 = ["Albania","Bolivia","Canada","Denmark","Ethiopia","Finland","Germany","Hungary","Ireland", "Japan", "kenia"];
-console.log(getFirstTenCountries(countries2))
+console.log(getFirstTenCountries(countries2)) // ['Albania', 'Bolivia', 'Canada', 'Denmark', 'Ethiopia', 'Finland', 'Germany', 'Hungary', 'Ireland', 'Japan']
 
 // CHATGPT -----------------------
 const getFirstTenCountries1 = (array) => {
     return array.slice(0, 10)
 }
-console.log(getFirstTenCountries1(countries2))
+console.log(getFirstTenCountries1(countries2)) // ['Albania', 'Bolivia', 'Canada', 'Denmark', 'Ethiopia', 'Finland', 'Germany', 'Hungary', 'Ireland', 'Japan']
 
 // --------------------------------------------------------------------------------------------------------------------------
 // 6. Declara una función getLastTenCountries que devuelve los últimos diez países del array de países.
@@ -332,13 +332,97 @@ let getLastTenCountries = (array) => {
 console.log(getLastTenCountries(countries2))
 
 
-
+// CHATGPT
 const getLastTenCountries1 = (countries) => {
     return countries.slice(-10);
-  };
-  
- 
-  
-  const lastTenCountries = getLastTenCountries1(countries2);
-  console.log(lastTenCountries);
-  
+}; 
+const lastTenCountries = getLastTenCountries1(countries2);
+console.log(lastTenCountries); // ['Albania', 'Bolivia', 'Canada', 'Denmark', 'Ethiopia', 'Finland', 'Germany', 'Hungary', 'Ireland', 'Japan']
+
+// ---------------------------------------------
+// 7. Encuentre qué letra se utiliza muchas veces como inicial de un nombre de país del array de países (ej. Finland, Fiji, France etc)
+const countries3 = ["China", "México", "Italia", "Estados Unidos", "Colombia", "Japón", "Francia", "Rusia", "Brasil", "Alemania", "Canadá", "Sudáfrica", "Egipto", "India", "España", "Indonesia", "Reino Unido", "Turquía", "Polonia", "Irán"];
+
+const letraMasUsada = (countries) => {
+    const resultArray = [];
+    countries.forEach(country => {
+        const firstLetter = country.charAt(0).toUpperCase();
+        const existingObject = resultArray.find(elem => elem.letter === firstLetter);
+        if(existingObject) {
+            existingObject.count += 1;
+        } else {
+            resultArray.push({letter: firstLetter, count: 1})
+        }
+        });
+    console.log(resultArray)
+
+    let mayor = 0; 
+    let letra = ''; 
+    const conteoLetra = resultArray.forEach(elem => {
+        if(elem.count > mayor) {
+            mayor = elem.count;
+            letra = elem.letter;
+        }
+    });
+    return `La inicial más usada es ${letra} y se repite en ${mayor} paises`
+};
+
+console.log(letraMasUsada(countries3))
+
+//CHATGPPT
+
+function findMostFrequentLetter(countries) {
+    const letterFrequency = {};
+
+    // Iterar sobre los países
+    countries.forEach(country => {
+        // Obtener la primera letra del país
+        const firstLetter = country.charAt(0).toUpperCase(); 
+
+        // Incrementar el contador de la letra
+        if (letterFrequency[firstLetter]) {
+            letterFrequency[firstLetter]++;
+        } else {
+            letterFrequency[firstLetter] = 1; // crea la clave con el valor
+        }
+    });
+
+    let mostFrequentLetter = '';
+    let highestFrequency = 0;
+
+    // Encontrar la letra con la frecuencia más alta
+    for (const letter in letterFrequency) {
+        if (letterFrequency[letter] > highestFrequency) {
+            mostFrequentLetter = letter;
+            highestFrequency = letterFrequency[letter];
+        }
+    }
+    console.log(letterFrequency )
+    return mostFrequentLetter;
+}
+
+const mostFrequentInitial = findMostFrequentLetter(countries3);
+console.log(`La letra más utilizada como inicial de un país es: ${mostFrequentInitial}`);
+// ---------------------------------------------------------------------------------------------
+
+// EJERCICIOS NIVEL3
+// 1. Utiliza la información de los países, en la carpeta de datos. Ordena los países por nombre, por capital, por población
+// Orden por capital
+import countries_data from "../DATA/countries_data.js"; // se usa export en el otro archivo y type="module" en el html
+
+// Ordenar los países por capital de forma ascendente
+let countriesOrdenPorCapital = countries_data.sort((a, b) => {
+    // Verificar si la propiedad "capital" está presente en ambos objetos
+    if (a.capital && b.capital) {
+        return a.capital.localeCompare(b.capital);
+    } else {
+        // Manejar el caso donde una de las propiedades "capital" falta
+        // Puedes decidir cómo manejar este caso, como colocarlos al final del array, etc.
+        return 0; // No se realiza ningún cambio de orden
+    }
+});
+
+console.log(countriesOrdenPorCapital); // *empieza por Ghana cuya capital es Accra
+// --------------------------------------------------------------------------------------------
+
+// 2. Encuentre las 10 lenguas más habladas:
