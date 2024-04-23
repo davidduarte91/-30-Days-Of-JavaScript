@@ -253,3 +253,4 @@ if(mesNumero !== null) {
 
     alert(`el mes de ${mesModificado} del año ${añoInput} tiene ${lastDayOfMonth} días y ${normalOBisiesto}`)
 }
+
