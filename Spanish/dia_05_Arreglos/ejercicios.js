@@ -46,6 +46,7 @@ console.log(itCompanies[itCompanies.length-1]) // Amazon
 
 // 10.Imprime cada empresa.
 console.log(itCompanies[0], itCompanies[1], itCompanies[2], itCompanies[3], itCompanies[4], itCompanies[5], itCompanies[6])
+// console.log(...itCompanies) también funciona
 
 //11.Cambie el nombre de cada empresa a mayúsculas uno por uno e imprímalos.
 console.log(itCompanies[0].toUpperCase(), itCompanies[1].toUpperCase(), itCompanies[2].toUpperCase(), itCompanies[3].toUpperCase(), itCompanies[4].toUpperCase(), itCompanies[5].toUpperCase(), itCompanies[6].toUpperCase())
